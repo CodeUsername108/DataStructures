@@ -1,0 +1,67 @@
+class Queue 
+{
+    int size = 5;
+    int front,rear;
+    int arr[]= new int[size];
+    Queue(){
+        front=rear=-1;
+    }
+
+boolean isFull(){
+    if(front==0 && rear ==size-1){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+boolean isEmpty(){
+    if(front==-1){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+void enQueue (int data){
+    if(isFull()){
+        System.out.println("queue overflow");
+    }
+    else {
+        if (front==-1){
+            front=0;
+        }
+        rear++;
+        arr[rear]=data;
+        System.out.println("Inserted "+data);
+    }
+}
+int deQueue(){
+    int data;
+    if(isEmpty()){
+        System.out.println("empty");
+        return -1;
+    }
+    else{
+        data = arr[front];
+        if (front>=rear){
+            front = -1;
+            rear = -1;
+        }
+        else{
+            front++;
+        }
+        System.out.println("Deleted "+data);
+        return (data);
+    }
+}
+}
+public class QueueExpt {
+    public static void main(String[] args){
+    Queue q = new Queue();
+    q.enQueue(1);
+    q.enQueue(2);
+    q.enQueue(3);
+    q.deQueue();
+}
+}
